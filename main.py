@@ -64,14 +64,55 @@
 #   si le choix est 3
 #   afficher "Au revoir"
 #   arrêter la boucle
+from game import creer_equipe, jouer_combat
+from utils import sauvegarder_score, afficher_classement
 
+# Afficher menu principal
 def afficher_menu_principal() :
-    print(" Démarrer le jeu")
-    print("Afficher le classement")
-    print(" Quitter")
+    print("1. Démarrer le jeu")
+    print("2. Afficher le classement")
+    print("3.  Quitter")
 
-def choix_est_valide(choix) :
-    return choix in ("1", "2", "3")
+# recuperer un choix valide dans le menu principal
+def recuperer_choix_valide() :
+    while True:
+        choix = input("Votre choix: ")
+        if choix in ("1", "2", "3"):
+            return choix
+        print("choix invalide")
+
+# demande le nom de joueur
+def demander_nom_joueur():
+    nom = input("Enter votre nom: ")
+    return nom
+
+# afficher le score
+def afficher_score(vagues):
+    print("Votre score:", vagues, "vagues")
+
+# programme principal
+while True:
+    afficher_menu_principal()
+    choix = recuperer_choix_valide()
+    if choix == "1":
+        nom = demander_nom_joueur()
+        equipe = creer_equipe
+        vagues = jouer_combat(equipe)
+        sauvegarder_score(nom, vagues)
+        afficher_score(vagues)
+        afficher_classement()
+    elif choix == "2":
+        afficher_classement()
+    elif choix == "3":
+        print("Au revoir")
+        break
+
+        
+
+
+
+
+
 
 
 

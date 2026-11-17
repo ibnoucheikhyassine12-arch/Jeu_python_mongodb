@@ -1,29 +1,77 @@
-# Répéter tant que le choix n'est pas 3 :
+#  Afficher menu principal
+#  afficher les options numérotées
+#  1. Démarrer le jeu
+#  2. Afficher le classement
+#  3. Quitter
 
-#     Afficher le menu :
-#     1 - Démarrer le jeu
-#     2 - Afficher le classement
-#     3 - Quitter
 
-#     Demander le choix au joueur
+# Récupérer un choix valide dans le menu principal
+# tant que infini
+# afficher menu principal
+# demander un choix à l'utilisateur
+# si le choix est 1, 2 ou 3
+# retourner le choix valide
+# afficher un message d'erreur
 
-#     Si le choix n'est pas valide :
-#         afficher "choix invalide"
-#         recommencer
 
-#     Si le choix est 1 :
-#         saisir le nom du joueur
-#         répéter jusqu'à ce que l'équipe ait 3 personnages :
-#             afficher les équipes
-#             afficher la liste des personnages
-#             choisir les équipes
-#         jouer le combat
-#         sauvegarder le score
-#         afficher le score et le classement
+# Demander le nom du joueur
+# demander un nom à l'utilisateur
+# retourner le nom
 
-#     Si le choix est 2 :
-#         afficher le classement
 
-#     Si le choix est 3 :
-#         afficher "Au revoir"
-#         quitter
+# Créer l'équipe
+# équipe vide
+# tant que l'équipe n'a pas 3 personnages
+#  afficher l'équipe actuelle
+#  afficher la liste des personnages disponibles avec leurs stats
+#  demander un personnage à l'utilisateur
+#  si le personnage est déjà dans l'équipe
+# afficher un message d'erreur
+# sinon, si le choix existe
+# ajouter le personnage à l'équipe
+# afficher un message d'erreur
+# retourner l'équipe
+
+# Jouer le combat
+# vagues = 0
+# tant que infini
+# tirer un monstre au hasard
+# afficher les stats du monstre
+# si tous les personnages ont 0 PV
+# retourner vagues
+# vagues = vagues + 1
+
+
+# Sauvegarder le score
+# enregistrer le nom du joueur et le nombre de vagues
+# Afficher le classement
+# récupérer les 3 meilleurs scores
+# pour chaque score
+# afficher le nom et le nombre de vagues
+
+# Programme principal
+# tant que infini
+# choix = récupérer un choix valide dans le menu principal
+#  si le choix est 1
+#  nom = demander le nom du joueur
+#  équipe = créer l'équipe
+#   vagues = jouer le combat avec l'équipe
+#   sauvegarder le score avec le nom et les vagues
+#   afficher le score
+#   afficher le classement
+#   si le choix est 2
+#   afficher le classement
+#   si le choix est 3
+#   afficher "Au revoir"
+#   arrêter la boucle
+
+def afficher_menu_principal() :
+    print(" Démarrer le jeu")
+    print("Afficher le classement")
+    print(" Quitter")
+
+def choix_est_valide(choix) :
+    return choix in ("1", "2", "3")
+
+
+

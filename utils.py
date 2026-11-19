@@ -1,14 +1,31 @@
+from pymongo import MongoClient
+
+
+
 # Sauvegarder le score
 def sauvegarder_score(nom, vagues):
     # se connecter à la base
+    client = MongoClient("mongodb://localhost:27017")
+    base = client["jeu_combat"]
+
     # enregistrer le nom du joueur et le nombre de vagues
-    pass
+    base["scores"].insert_one({"nom": nom, "vagues": vagues})
 
 
 # Afficher le classement
 def afficher_classement():
     # se connecter à la base
+    client = MongoClient("mongodb://localhost:27017")
+    base = client["jeu_combat"]
+
     # récupérer les 3 meilleurs scores
+    scores = list(base["scores"].find().sort("vagues", -1).limit(3))
+
+    print("\nClassement :")
+    if len(scores) == 0:
+        print("Aucun score pour le moment")
+
     # pour chaque score
-    # afficher le nom et le nombre de vagues
-    pass
+    for i, score in enumerate(scores, start=1):
+        # afficher le nom et le nombre de vagues
+        print(i, ".", score["nom"], "-", score["vagues"], "vagues")

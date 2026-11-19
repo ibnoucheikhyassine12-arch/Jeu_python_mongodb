@@ -1,9 +1,14 @@
-
+from pymongo import MongoClient
 # Créer l'équipe
 def creer_equipe():
     # se connecter à la base
+    client = MongoClient ("mongodb://localhost:27017")
+    base = client["jeu_combat"]
     # récupérer la liste des personnages
+    personnage = list(base["personnages"].find())
+    print(personnage)
     # équipe vide
+    equipe = []
     # tant que l'équipe n'a pas 3 personnages
     # afficher l'équipe actuelle
     # afficher la liste des personnages avec leurs stats

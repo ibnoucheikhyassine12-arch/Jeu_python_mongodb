@@ -57,17 +57,31 @@ def creer_equipe():
     return equipe
 
 # Jouer le combat
-#     se connecter à la base
-#     récupérer la liste des monstres
-#     vagues = 0
-#     tant que infini
-#         tirer un monstre au hasard
-#         afficher les stats du monstre
-#         tant que le monstre a des PV
-#             pour chaque personnage vivant
-#                 le personnage attaque le monstre
-#             si le monstre a encore des PV
-#                 le monstre attaque un personnage vivant
-#                 si tous les personnages ont 0 PV
-#                     retourner vagues
-#         vagues = vagues + 1
+def jouer_combat():
+# se connecter à la base
+client = MongoClient("mongodb://localhost:27017")
+base = client["jeu_combat"]
+# récupérer la liste des monstres
+monstres = list(base["monstres"].find())
+# vagues = 0
+vagues = 0
+# tant que infini
+while True:
+# tirer un monstre au hasard
+ monstre = random.choice(monstres).copy()
+# afficher les stats du monstre
+ print("\n Vague", vagues + 1)
+ print("Monstre :", monstre["nom"], "- ATK", monstre["attaque"], "- DEF", monstre["defense"], "- PV", monstre["pv"])
+# tant que le monstre a des PV
+ while monstre["pv"] > 0: 
+# pour chaque personnage vivant
+    for perso in equipe:
+        if perso["pv"] > 0 and monstre["pv"] > 0:
+# le personnage attaque le monstre
+ degats = max(0, perso["attaque"] - monstre["defense"])
+ 
+# si le monstre a encore des PV
+# le monstre attaque un personnage vivant
+# si tous les personnages ont 0 PV
+# retourner vagues
+# vagues = vagues + 1

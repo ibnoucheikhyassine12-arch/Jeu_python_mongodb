@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 
 
-
 # Sauvegarder le score
 def sauvegarder_score(nom, vagues):
     # se connecter à la base
@@ -26,6 +25,8 @@ def afficher_classement():
         print("Aucun score pour le moment")
 
     # pour chaque score
-    for i, score in enumerate(scores, start=1):
+    rang = 1
+    for score in scores:
         # afficher le nom et le nombre de vagues
-        print(i, ".", score["nom"], "-", score["vagues"], "vagues")
+        print(rang, ".", score["nom"], "-", score["vagues"], "vagues")
+        rang = rang + 1

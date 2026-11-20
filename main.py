@@ -57,7 +57,7 @@
 # Programme principal
 # tant que infini
 # afficher menu principal
-# choix = récupérer un choix valide dans le menu principal
+#  récupérer un choix valide dans le menu principal
 # si le choix est 1
 # nom = demander le nom du joueur
 # équipe = créer l'équipe
